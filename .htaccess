@@ -1,0 +1,49 @@
+RewriteEngine On
+RewriteBase /novel/
+
+# ── Internal rewrites (no redirect) ─────────────────────
+
+# /home → index.php
+RewriteRule ^home/?$ index.php [NC,L]
+
+# /product/123 → product.php?id=123
+RewriteRule ^product/([0-9]+)/?$ product.php?id=$1 [NC,L,QSA]
+
+# /products/category/123 → products.php?category=123
+RewriteRule ^products/category/([0-9]+)/?$ products.php?category=$1 [NC,L,QSA]
+
+# /products/search/term → products.php?search=term
+RewriteRule ^products/search/(.+)/?$ products.php?search=$1 [NC,L,QSA]
+
+# /cart → cart.php
+RewriteRule ^cart/?$ cart.php [NC,L]
+
+# /profile → profile.php
+RewriteRule ^profile/?$ profile.php [NC,L]
+
+# /logout → logout.php
+RewriteRule ^logout/?$ logout.php [NC,L]
+
+# /login → login.php
+RewriteRule ^login/?$ login.php [NC,L]
+
+# /about → about.php
+RewriteRule ^about/?$ about.php [NC,L]
+
+# /contact → contact.php
+RewriteRule ^contact/?$ contact.php [NC,L]
+
+# /products → products.php
+RewriteRule ^products/?$ products.php [NC,L]
+
+# ── Bare root redirect ───────────────────────────────────
+RewriteRule ^$ /novel/home [R=301,L]
+
+# ── Extensionless .php URLs ──────────────────────────────
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# ── Security ─────────────────────────────────────────────
+Options -Indexes
