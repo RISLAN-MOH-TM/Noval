@@ -371,7 +371,7 @@ You must be logged in with an account that has `user_type = 'admin'`.
 
 | Role | Username | Password |
 |------|----------|----------|
-| Admin | `admin` | `password` |
+| Admin | `rislan` | `123456` |
 
 > **Change this immediately** after your first login via Admin → Users → Edit, or via the Profile page.
 
